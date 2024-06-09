@@ -1,0 +1,20 @@
+<div class="uploadBG">
+    <button class="formBtn" (click)="FileBg.click()">uploadBG</button>
+    <input type="file" #FileBg (change)="uploadBgFile($event)">
+</div>
+<div class="shift-bg">
+    <header>
+        <p>Background preview</p>
+        <p>Upload Date</p>
+        <p>status</p>
+        <p>buttons</p>
+    </header>
+    <div class="row" *ngFor="let item of backgrounds$ | async; trackBy: trackByFn">
+        <img [src]="item.path" alt="">
+        <p>{{item.createdAt.split('.')[0].replace("T", " ")}}</p>
+        <div class="toggle-btn">
+            <input type="checkbox" (change)="toggleBackgroundStatus(item)" [checked]="item.status">
+        </div>
+        <button class="delete" (click)="deleteBackground(item.id)">delete</button>
+    </div>
+</div>

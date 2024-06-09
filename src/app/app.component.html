@@ -1,0 +1,6 @@
+<div class="bgs" *ngIf="activeBg.length > 0">
+    <div class="bg" *ngFor="let item of activeBg; let i = index" [id]="i" [ngStyle]="{'background-image': 'url(' + item.path + ')', 'opacity': activeBgNumb == i ? .9: 0}"></div>
+</div>
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

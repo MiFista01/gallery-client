@@ -1,0 +1,11 @@
+<aside class="news">
+    <header>
+        <input type="text" class="search" placeholder="Search news" (input)="searchNews($event)">
+    </header>
+    <div class="news-block">
+        <a class="news-item" *ngFor="let item of showNews" [routerLink]="[ '/news', item.id ]">
+            <h3 class="title">{{item.title}}</h3>
+            <p class="des">{{item.text.substring(0,200)}} <span *ngIf="item.text.length > 200">...</span></p>
+        </a>
+    </div>
+</aside>

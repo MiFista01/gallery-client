@@ -1,0 +1,23 @@
+<div class="window" [ngClass]="{'show':showNewsGallery}">
+    <div class="bg" (click)="toggleNewsGallery()"></div>
+    <div class="body">
+        <div class="gallery-item" *ngFor="let item of newsArray" (click)="handleClick(item)" [ngClass]="{'active': activeItemId == item.id}">
+            <img src="./assets/imgs/painting/delete.png" class="btn-delete" alt="" (click)="deleteNews(item.id)">
+            <h3>{{item.title}}</h3>
+        </div>
+    </div>
+</div>
+<div class="adminForm">
+    <div class="img" [ngClass]="{'default': default}" (click)="poster.click()">
+        <img [src]="newsPreviewUrl" alt="" >
+        <input type="file" #poster (change)="setImg($event)">
+    </div>
+    <div class="fields">
+        <input type="text" placeholder="News title" required [(ngModel)]="news.title">
+        <textarea name="" id="" placeholder="News text" required [(ngModel)]="news.text"></textarea>
+        <button class="formBtn" [disabled]="active" (click)="submitNews()">submit</button>
+    </div>
+</div>
+<div class="btn-window-toggle">
+    <img src="./assets/imgs/painting/news.png" alt="" (click)="toggleNewsGallery()">
+</div>

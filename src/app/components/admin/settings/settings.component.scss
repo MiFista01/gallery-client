@@ -1,0 +1,84 @@
+@import "../../../../styles.scss";
+:host {
+    width: 95%;
+    margin: auto;
+}
+.uploadBG {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    input {
+        display: none;
+    }
+}
+.shift-bg {
+    width: 100%;
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 50%;
+        margin: auto;
+        p {
+            margin: 0px;
+            font-size: calc($size-index * 1.1);
+            &::first-letter{
+                text-transform: uppercase;
+            }
+            &:first-child {
+                width: 40%;
+                text-align: center;
+            }
+            &:not(:first-child) {
+                flex-grow: 1;
+                width: 20%;
+                text-align: center;
+            }
+        }
+    }
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 50%;
+        margin: 10px auto;
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(4px);
+        box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        padding: 15px;
+        box-sizing: border-box;
+        img {
+            width: 40%;
+            margin-right: 10px;
+        }
+        & > *:not(img) {
+            flex-grow: 1;
+            width: 20%;
+        }
+        p {
+            text-align: center;
+            font-size: calc($size-index * .9);
+        }
+        .toggle-btn {
+            display: flex;
+            justify-content: center;
+        }
+        .delete {
+            font-size: calc($size-index * 0.7);
+            background-color: red;
+            border-radius: 5px;
+            padding: 10px 30px;
+            color: white;
+            text-transform: uppercase;
+            border: 2px solid white;
+            word-wrap: break-word;
+            cursor: pointer;
+            transition-duration: 0.3s;
+            &:hover {
+                scale: 1.1;
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+<div class="paintings">
+    <header>
+        <input type="text" class="search" placeholder="Search paintings" (input)="searchPainting($event)">
+    </header>
+    <div class="painting" *ngFor="let item of showPaintings" [attr.price]="item.price + '€'">
+        <div class="painting-bg" [ngStyle]="{ 'background-image': 'url(' + item.imgPath + ')' }"></div>
+        <a [routerLink]="[ '/painting', item.id ]"><img [src]="item.imgPath" alt=""></a>
+        <div class="des">
+            <h3 class="title">{{item.title}}</h3>
+            <p class="des">{{item.des.substring(0,50)}} <span *ngIf="item.des.length > 50">...</span></p>
+        </div>
+    </div>
+</div>

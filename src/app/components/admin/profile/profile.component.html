@@ -1,0 +1,14 @@
+<div class="adminForm">
+    <div class="img">
+        <img [src]="avatarPreviewUrl" alt="" (click)="choiceAvatar.click()">
+        <input type="file" #choiceAvatar (change)="setImg($event)" accept="image/*">
+    </div>
+    <div class="fields">
+        <input type="text" placeholder="name" [(ngModel)]="user.name">
+        <input type="email" placeholder="email" [(ngModel)]="user.email">
+        <input type="tel" placeholder="phone" [(ngModel)]="user.phone">
+        <input type="text" placeholder="password" [(ngModel)]="user.password">
+        <textarea name="" id="" [(ngModel)]="user.text"></textarea>
+        <button class="formBtn" [disabled]="update" (click)="updateProfile()">update profile</button>
+    </div>
+</div>

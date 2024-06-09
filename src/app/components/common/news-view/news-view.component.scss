@@ -1,0 +1,39 @@
+@import "../../../../styles.scss";
+.news {
+    width: 95%;
+    margin: auto;
+    header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .news-block {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .news-item {
+            width: 100%;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.2);
+            transition-duration: 0.2s;
+            box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0);
+            padding: 10px;
+            box-sizing: border-box;
+            &:hover {
+                box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+            }
+            h3 {
+                margin: 0px;
+                font-size: calc($size-index * 1.5);
+            }
+            p {
+                font-size: calc($size-index * .9);
+                margin: 0px;
+            }
+        }
+    }
+}

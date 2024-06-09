@@ -1,0 +1,42 @@
+@import "../../../../styles.scss";
+:host{
+    display: flex;
+    align-items: start;
+    width: 95%;
+    margin: auto;
+    margin-top: 10px;
+    &>img{
+        width: 25%;
+        border-radius: 5px;
+    }
+    .user-data{
+        position: sticky;
+        top: 16%;
+        display: flex;
+        flex-wrap: wrap;
+        width: 70%;
+        flex-grow: 1;
+        margin-left: 20px;
+        backdrop-filter: blur(4px);
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        box-sizing: border-box;
+        box-shadow: inset 0px 0px 15px 5px rgba(0, 0, 0, 0.2);
+        h2{
+            width: 100%;
+            margin: 0px;
+            font-size: calc($size-index * 2);
+            }
+            p{
+            font-size: calc($size-index * .9);
+            margin: 0px;
+            &:nth-child(2){
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            &:not(:nth-child(2)){
+                margin-right: 10px;
+            }
+        }
+    }
+}

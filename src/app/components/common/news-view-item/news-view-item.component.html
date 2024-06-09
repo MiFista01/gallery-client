@@ -1,0 +1,23 @@
+<div  class="item">
+  <a class="row" [routerLink]="['/news', allNews[placeArray-1]? allNews[placeArray-1].id: allNews[0].id]"
+    [ngStyle]="{'opacity': id === allNews[0].id ? 0 : 1, 'pointer-events': id === allNews[0].id ? 'none' : ''}" (click)="handleChangeItem(-1)">
+    <p>&#8656;</p>
+  </a>
+  <div class="body" *ngIf="allNews.length > 0 && news != null">
+    <img [src]="news.poster" alt="">
+    <div class="fields">
+      <h2>{{ news.title }}</h2>
+      <p class="text">{{ news.text }}</p>
+      <p class="createdAt">Created at: {{news.createdAt?.split('.')![0].replace("T"," ")}}</p>
+      <p class="createdAt">Updated at: {{news.updatedAt?.split('.')![0].replace("T"," ")}}</p>
+    </div>
+  </div>
+  <div class="not-exist" *ngIf="news == null">
+    <h2>News was deleted</h2>
+    <p>The news was removed for reasons of old age or invalidity</p>
+  </div>
+  <a class="row" [routerLink]="['/news', allNews[placeArray+1]? allNews[placeArray+1].id: allNews[allNews.length - 1].id]"
+    [ngStyle]="{'opacity': id === allNews[allNews.length - 1].id ? 0 : 1, 'pointer-events': id === allNews[allNews.length - 1].id ? 'none' : ''}" (click)="handleChangeItem(1)">
+    <p>&#8658;</p>
+  </a>
+</div>

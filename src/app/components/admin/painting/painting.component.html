@@ -1,0 +1,26 @@
+<div class="window" [ngClass]="{'show':showGallery}">
+    <div class="bg" (click)="toggleGallery()"></div>
+    <div class="body">
+        <div class="gallery-item" *ngFor="let item of galleryItems" (click)="handleClick(item)" [ngClass]="{'active': activeItemId == item.id}">
+            <div class="painting-bg" [ngStyle]="{'background-image': 'url('+item.imgPath+')'}"></div>
+            <img src="./assets/imgs/painting/delete.png" class="btn-delete" alt="" (click)="deletePainting(item.id)">
+            <img [src]="item.imgPath" [alt]="item.title">
+            <h3>{{item.title}}</h3>
+        </div>
+    </div>
+</div>
+<div class="adminForm painting">
+    <div class="img" [ngClass]="{'default': default}" (click)="choicePainting.click()">
+        <img [src]="paintingPreviewUrl" alt="" >
+        <input type="file" #choicePainting (change)="setImg($event)" accept="image/*">
+    </div>
+    <div class="fields">
+        <input type="text" placeholder="Title" [(ngModel)]="painting.title">
+        <input type="number" placeholder="Painting price" [(ngModel)]="painting.price">
+        <textarea name="" placeholder="Painting description" [(ngModel)]="painting.des"></textarea>
+        <button class="formBtn"  [disabled]="active" (click)="submitPainting()">submit</button>
+    </div>
+</div>
+<div class="btn-window-toggle">
+    <img src="./assets/imgs/painting/gallery.png" alt="" (click)="toggleGallery()">
+</div>

@@ -1,0 +1,19 @@
+<header>
+    <a [routerLink]="[ '/home' ]"><h1>Tatjana</h1></a>
+    <div class="routes">
+        <div class="guest" *ngIf="!isAdmin">
+            <a [routerLink]="[ '/about']" routerLinkActive="active">about</a>
+            <a [routerLink]="[ '/gallery']" routerLinkActive="active">gallery</a>
+            <a [routerLink]="[ '/news']" routerLinkActive="active">news</a>
+        </div>
+        <div class="admin" *ngIf="isAdmin">
+            <a [routerLink]="[ '/admin', 'profile' ]" routerLinkActive="active">profile</a>
+            <a [routerLink]="[ '/admin', 'paintings' ]" routerLinkActive="active">paintings</a>
+            <a [routerLink]="[ '/admin', 'settings' ]" routerLinkActive="active">settings</a>
+            <a [routerLink]="[ '/admin', 'news' ]" routerLinkActive="active">news</a>
+        </div>
+        <div class="btns" *ngIf="isAdmin">
+            <p>logout</p>
+        </div>
+    </div>
+</header>
