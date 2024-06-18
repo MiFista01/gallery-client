@@ -3,27 +3,38 @@ import { Component } from '@angular/core';
 import { environment } from '@env';
 import { BgService } from '@services/bg.service';
 import { RequestsService } from '@services/requests.service';
+import { FormsModule } from '@angular/forms';
 interface bg {
   id: number;
   path: string;
   status: boolean;
-  createdAt:string
+  createdAt: string
+}
+interface user {
+  mapSrc: string
 }
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
 })
 export class SettingsComponent {
   backgrounds$ = this.bgService.getBackgrounds();
+  mapSrc = ""
+  change = false
   constructor(
-    private readonly req:RequestsService,
+    private readonly req: RequestsService,
     private bgService: BgService
-  ){}
+  ) { }
+  ngOnInit(): void {
+    this.req.Get<user>(`${environment.apiUrl}/user/1`).subscribe(data => {
+      this.mapSrc = data.mapSrc
+    })
+  }
   trackByFn(index: number, item: any) {
-    return item.id; // Предполагается, что у вас есть уникальный идентификатор для каждого элемента списка
+    return item.id;
   }
   uploadBgFile(e: any): void {
     const fileList: FileList = e.target.files;
@@ -40,12 +51,20 @@ export class SettingsComponent {
   }
   toggleBackgroundStatus(bg: bg): void {
     this.bgService.updateBackgroundStatus(bg.id, !bg.status).subscribe(() => {
-      console.log(`Background with id ${bg.id} status updated to ${!bg.status}`);
+      
     });
   }
   deleteBackground(id: number): void {
     this.bgService.deleteBackground(id).subscribe(() => {
-      console.log(`Background with id ${id} deleted`);
+      
     });
+  }
+  changeMapSrc(){
+    this.change = true
+    this.req.Patch(`${environment.apiUrl}/user/1`,{mapSrc: this.mapSrc}).subscribe(data=>{
+      if(data){
+        this.change = false
+      }
+    })
   }
 }

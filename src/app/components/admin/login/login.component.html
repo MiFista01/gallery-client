@@ -1,1 +1,6 @@
-<p>login works!</p>
+<div class="login">
+    <h2 class="Big">Sisselogimisvorm</h2>
+    <input type="text" class="Regular" placeholder="Nimi või email" [(ngModel)]="user">
+    <input type="password" class="Regular" placeholder="Parool" [(ngModel)]="password">
+    <button class="formBtn Regular" (click)="login()">Esita</button>
+</div>

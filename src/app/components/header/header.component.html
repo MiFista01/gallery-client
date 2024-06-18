@@ -1,19 +1,58 @@
 <header>
-    <a [routerLink]="[ '/home' ]"><h1>Tatjana</h1></a>
+    <a [routerLink]="[ '/home' ]">
+        <h1 class="Colossus">{{ 'header.logoName' | translate }}</h1>
+    </a>
     <div class="routes">
-        <div class="guest" *ngIf="!isAdmin">
-            <a [routerLink]="[ '/about']" routerLinkActive="active">about</a>
-            <a [routerLink]="[ '/gallery']" routerLinkActive="active">gallery</a>
-            <a [routerLink]="[ '/news']" routerLinkActive="active">news</a>
+        <div class="guest Big" *ngIf="!isAdmin">
+            <a [routerLink]="[ '/about']" routerLinkActive="active">{{ 'header.btns.about' | translate }}</a>
+            <a [routerLink]="[ '/gallery']" routerLinkActive="active">{{ 'header.btns.gallery' | translate }}</a>
+            <a [routerLink]="[ '/news']" routerLinkActive="active">{{ 'header.btns.news' | translate }}</a>
         </div>
-        <div class="admin" *ngIf="isAdmin">
-            <a [routerLink]="[ '/admin', 'profile' ]" routerLinkActive="active">profile</a>
-            <a [routerLink]="[ '/admin', 'paintings' ]" routerLinkActive="active">paintings</a>
-            <a [routerLink]="[ '/admin', 'settings' ]" routerLinkActive="active">settings</a>
-            <a [routerLink]="[ '/admin', 'news' ]" routerLinkActive="active">news</a>
+        <div class="admin Big" *ngIf="isAdmin">
+            <a [routerLink]="[ '/admin', 'profile' ]" routerLinkActive="active">profiil</a>
+            <a [routerLink]="[ '/admin', 'paintings' ]" routerLinkActive="active">maalingud</a>
+            <a [routerLink]="[ '/admin', 'news' ]" routerLinkActive="active">uudised</a>
+            <a [routerLink]="[ '/admin', 'settings' ]" routerLinkActive="active">seaded</a>
         </div>
-        <div class="btns" *ngIf="isAdmin">
-            <p>logout</p>
+        <div class="btns Big" *ngIf="isAdmin">
+            <p (click)="logOut()">Logi välja</p>
         </div>
+    </div>
+    <div class="mobile-routes">
+        <svg id="hamburger" class="Header__toggle-svg" [ngClass]="{'burger-active': open, 'burger-inactive': !open}" (click)="toggleBurger()" viewBox="0 0 60 40" preserveAspectRatio="xMidYMid meet">
+            <g stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <path id="top-line" d="M10,10 L50,10 Z"></path>
+                <path id="middle-line" d="M10,20 L50,20 Z"></path>
+                <path id="bottom-line" d="M10,30 L50,30 Z"></path>
+            </g>
+        </svg>
+        <ul class="guest Big" *ngIf="!isAdmin" [ngClass]="{'hideList': !open}">
+            <li>
+                <a [routerLink]="[ '/about']" routerLinkActive="active">{{ 'header.btns.about' | translate }}</a>
+            </li>
+            <li>
+                <a [routerLink]="[ '/gallery']" routerLinkActive="active">{{ 'header.btns.gallery' | translate }}</a>
+            </li>
+            <li>
+                <a [routerLink]="[ '/news']" routerLinkActive="active">{{ 'header.btns.news' | translate }}</a>
+            </li>
+        </ul>
+        <ul class="admin Big" *ngIf="isAdmin" [ngClass]="{'hideList': !open}">
+            <li>
+                <a [routerLink]="[ '/admin', 'profile' ]" routerLinkActive="active">profiil</a>
+            </li>
+            <li>
+                <a [routerLink]="[ '/admin', 'paintings' ]" routerLinkActive="active">maalingud</a>
+            </li>
+            <li>
+                <a [routerLink]="[ '/admin', 'news' ]" routerLinkActive="active">uudised</a>
+            </li>
+            <li>
+                <a [routerLink]="[ '/admin', 'settings' ]" routerLinkActive="active">seaded</a>
+            </li>
+            <li>
+                <p (click)="logOut()">Logi välja</p>
+            </li>
+        </ul>
     </div>
 </header>

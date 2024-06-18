@@ -37,7 +37,6 @@
             position: absolute;
             left: 5%;
             bottom: 2%;
-            font-size: calc($size-index * 1);
             font-weight: 700;
             transition-duration: 0.4s;
             z-index: 1;
@@ -79,7 +78,6 @@
                 }
             }
             h3 {
-                font-size: calc($size-index * 1.2);
                 margin: 0px;
                 width: 100%;
                 text-align: center;
@@ -87,7 +85,6 @@
                 overflow-wrap: break-word;
             }
             p {
-                font-size: calc($size-index * 0.9);
                 margin: 0px;
                 text-align: justify;
                 width: 100%;
@@ -96,5 +93,28 @@
                 overflow-wrap: break-word;
             }
         }
+    }
+}
+@media (max-width: 1200px) {
+    .painting {
+        width: 28% !important;
+        height: 40svh !important;
+        margin-bottom: 5% !important;
+    }
+}
+@media (max-width: 800px) {
+    @media (orientation: portrait) {
+        .painting {
+            height: 45svh !important;
+        }
+    }
+    @media (orientation: landscape) {
+        .painting {
+            height: 70svh !important;
+        }
+    }
+    .painting {
+        width: 45% !important;
+        margin-bottom: 5% !important;
     }
 }

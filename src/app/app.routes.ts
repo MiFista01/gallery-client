@@ -12,6 +12,7 @@ import { NewsViewItemComponent } from './components/common/news-view-item/news-v
 import { ProfileComponent } from './components/admin/profile/profile.component';
 import { GalleryComponent } from './components/common/gallery/gallery.component';
 import { GalleryItemComponent } from './components/common/gallery-item/gallery-item.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -20,19 +21,19 @@ export const routes: Routes = [
                 path: "login", component: LoginComponent
             },
             {
-                path: "dashboard", component: DashboardComponent
+                path: "dashboard", component: DashboardComponent, canActivate: [authGuard]
             },
             {
-                path: "profile", component: ProfileComponent
+                path: "profile", component: ProfileComponent, canActivate: [authGuard]
             },
             {
-                path: "paintings", component: PaintingComponent
+                path: "paintings", component: PaintingComponent, canActivate: [authGuard]
             },
             {
-                path: "settings", component: SettingsComponent
+                path: "settings", component: SettingsComponent, canActivate: [authGuard]
             },
             {
-                path: "news", component: NewsComponent
+                path: "news", component: NewsComponent, canActivate: [authGuard]
             }
         ],
     },

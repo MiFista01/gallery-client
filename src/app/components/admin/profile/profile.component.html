@@ -4,11 +4,11 @@
         <input type="file" #choiceAvatar (change)="setImg($event)" accept="image/*">
     </div>
     <div class="fields">
-        <input type="text" placeholder="name" [(ngModel)]="user.name">
-        <input type="email" placeholder="email" [(ngModel)]="user.email">
-        <input type="tel" placeholder="phone" [(ngModel)]="user.phone">
-        <input type="text" placeholder="password" [(ngModel)]="user.password">
-        <textarea name="" id="" [(ngModel)]="user.text"></textarea>
-        <button class="formBtn" [disabled]="update" (click)="updateProfile()">update profile</button>
+        <input class="Regular" type="text" placeholder="nimi" [(ngModel)]="user.name">
+        <input class="Regular" type="email" placeholder="meili" [(ngModel)]="user.email">
+        <input class="Regular" type="tel" placeholder="telefon" [(ngModel)]="user.phone">
+        <input class="Regular" type="text" placeholder="parool" [(ngModel)]="user.password">
+        <textarea class="Regular" name="" id="" [(ngModel)]="user.text"></textarea>
+        <button class="formBtn Regular" [disabled]="update" (click)="updateProfile()">uuenda profiili</button>
     </div>
 </div>

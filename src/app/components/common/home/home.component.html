@@ -1,30 +1,30 @@
 <div class="blocks">
     <div class="block">
         <header>
-            <h2>Most popular</h2>
+            <h2 class="Large">{{ 'common.home.popularTitle' | translate }}</h2>
         </header>
         <div class="paintings">
-            <div class="painting" *ngFor="let item of mostPopular" [attr.price]="item.price + '€'">
+            <div class="painting Small" *ngFor="let item of mostPopular" [attr.price]="item.price + '€'">
                 <div class="painting-bg" [ngStyle]="{ 'background-image': 'url(' + item.imgPath + ')' }"></div>
                 <a [routerLink]="[ '/painting', item.id ]"><img [src]="item.imgPath" alt=""></a>
                 <div class="des">
-                    <h3 class="title">{{item.title}}</h3>
-                    <p class="des">{{item.des.substring(0,50)}} <span *ngIf="item.des.length > 50">...</span></p>
+                    <h3 class="title Middle">{{item.title}}</h3>
+                    <p class="des Regular">{{item.des.substring(0,desLength)}} <span *ngIf="item.des.length > desLength">...</span></p>
                 </div>
             </div>
         </div>
     </div>
     <div class="block">
         <header>
-            <h2>Last Added</h2>
+            <h2 class="Large">{{ 'common.home.lastAddedTitle' | translate }}</h2>
         </header>
         <div class="paintings">
-            <div class="painting" *ngFor="let item of lastAdded" [attr.price]="item.price + '€'">
+            <div class="painting Small" *ngFor="let item of lastAdded" [attr.price]="item.price + '€'">
                 <div class="painting-bg" [ngStyle]="{ 'background-image': 'url(' + item.imgPath + ')' }"></div>
                 <a [routerLink]="[ '/painting', item.id ]"><img [src]="item.imgPath" alt=""></a>
                 <div class="des">
-                    <h3 class="title">{{item.title}}</h3>
-                    <p class="des">{{item.des.substring(0,50)}} <span *ngIf="item.des.length > 50">...</span></p>
+                    <h3 class="title Middle">{{item.title}}</h3>
+                    <p class="des Regular">{{item.des.substring(0,desLength)}} <span *ngIf="item.des.length > desLength">...</span></p>
                 </div>
             </div>
         </div>
@@ -32,12 +32,12 @@
 </div>
 <aside class="news">
     <header>
-        <h2>Last gallery news</h2>
+        <h2 class="Middle">{{ 'common.home.newsTitle' | translate }}</h2>
     </header>
     <div class="news-block">
         <a class="news-item" *ngFor="let item of news" [routerLink]="[ '/news', item.id ]">
-            <h3 class="title">{{item.title}}</h3>
-            <p class="des">{{item.text.substring(0,50)}} <span *ngIf="item.text.length > 50">...</span></p>
+            <h3 class="title Regular">{{item.title}}</h3>
+            <p class="des Small">{{item.text.substring(0,desLength)}} <span *ngIf="item.text.length > desLength">...</span></p>
         </a>
     </div>
 </aside>

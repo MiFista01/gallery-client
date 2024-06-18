@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { environment } from '@env';
+import { TranslateModule } from '@ngx-translate/core';
 import { RequestsService } from '@services/requests.service';
 interface painting {
   id?:number
@@ -18,7 +19,7 @@ interface news {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -26,6 +27,7 @@ export class HomeComponent {
   mostPopular:painting[] = []
   lastAdded:painting[] = []
   news: news[] = []
+  desLength = 40
   constructor(
     private readonly req: RequestsService
   ){}

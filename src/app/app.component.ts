@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { RequestsService } from '@services/requests.service';
-import { environment } from '@env';
 import { CommonModule } from '@angular/common';
 import { interval } from 'rxjs';
 import { BgService } from '@services/bg.service';
+import { TranslateService } from '@ngx-translate/core';
 interface bg {
   path: string
   status: boolean
@@ -14,14 +13,26 @@ interface bg {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, HeaderComponent, FooterComponent],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    HeaderComponent,
+    FooterComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   activeBg: bg[] = []
   activeBgNumb = 0
-  constructor(private bgService: BgService) { }
+  constructor(
+    private bgService: BgService,
+    translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'est', 'ru']);
+    translate.setDefaultLang('en');
+    translate.use('en');
+  }
   ngOnInit(): void {
     this.bgService.getActiveBackgrounds().subscribe(data => {
       this.activeBg = data;

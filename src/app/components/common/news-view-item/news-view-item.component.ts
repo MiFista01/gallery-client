@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { environment } from '@env';
 import { RequestsService } from '@services/requests.service';
+import { IAlbum, Lightbox, LightboxModule } from 'ngx-lightbox';
 import { forkJoin, map, switchMap } from 'rxjs';
 interface news {
   id?: number
@@ -15,7 +16,7 @@ interface news {
 @Component({
   selector: 'app-news-view-item',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, LightboxModule],
   templateUrl: './news-view-item.component.html',
   styleUrl: './news-view-item.component.scss'
 })
@@ -23,10 +24,12 @@ export class NewsViewItemComponent {
   id = 0
   news: Partial<news> | null = {}
   allNews: news[] = []
+  private _album: IAlbum[] = []; 
   placeArray = -1
   constructor(
     private readonly req: RequestsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _lightbox: Lightbox
   ) { }
   ngOnInit(): void {
     this.route.paramMap.pipe(
@@ -59,6 +62,11 @@ export class NewsViewItemComponent {
       })
     ).subscribe(({ news, allNews }) => {
       this.news = news;
+      this._album = [{
+        src: news?.poster? news?.poster:"" ,
+        thumb: news?.poster? news?.poster:"",
+        caption: news?.title
+      }]
       this.allNews = allNews;
       this.placeArray = allNews.findIndex(value => { return value.id == news?.id })
     });
@@ -77,5 +85,12 @@ export class NewsViewItemComponent {
     }
     value = defaultValue
     return defaultValue
+  }
+  open(): void { // open lightbox 
+    this._lightbox.open(this._album, 0);
+  }
+
+  close(): void { // close lightbox programmatically 
+    this._lightbox.close();
   }
 }

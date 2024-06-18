@@ -3,7 +3,7 @@
     <div class="body">
         <div class="gallery-item" *ngFor="let item of newsArray" (click)="handleClick(item)" [ngClass]="{'active': activeItemId == item.id}">
             <img src="./assets/imgs/painting/delete.png" class="btn-delete" alt="" (click)="deleteNews(item.id)">
-            <h3>{{item.title}}</h3>
+            <h3 class="Middle">{{item.title}}</h3>
         </div>
     </div>
 </div>
@@ -13,9 +13,9 @@
         <input type="file" #poster (change)="setImg($event)">
     </div>
     <div class="fields">
-        <input type="text" placeholder="News title" required [(ngModel)]="news.title">
-        <textarea name="" id="" placeholder="News text" required [(ngModel)]="news.text"></textarea>
-        <button class="formBtn" [disabled]="active" (click)="submitNews()">submit</button>
+        <input class="Regular" type="text" placeholder="Uudise pealkiri" required [(ngModel)]="news.title">
+        <textarea class="Regular" name="" id="" placeholder="Uudiste tekst" required [(ngModel)]="news.text"></textarea>
+        <button class="formBtn Regular" [disabled]="active" (click)="submitNews()">Esita</button>
     </div>
 </div>
 <div class="btn-window-toggle">

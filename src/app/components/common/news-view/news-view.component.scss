@@ -26,12 +26,8 @@
             &:hover {
                 box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
             }
-            h3 {
-                margin: 0px;
-                font-size: calc($size-index * 1.5);
-            }
+            h3,
             p {
-                font-size: calc($size-index * .9);
                 margin: 0px;
             }
         }

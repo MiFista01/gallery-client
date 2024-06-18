@@ -12,6 +12,7 @@ interface painting {
   price: number
   img: any
   imgPath: string
+  size:string
 }
 @Component({
   selector: 'app-painting',
@@ -21,18 +22,22 @@ interface painting {
   styleUrl: './painting.component.scss'
 })
 export class PaintingComponent {
+  id = 0
+  singleClickDelay = 250;
+  activeItemId = 0
+  width = ""
+  height = ""
+  errorMessage = ""
+  default = true
+  active = false
+  showGallery = false
+
   @ViewChild('choicePainting') img!: ElementRef<HTMLInputElement>;
   painting: Partial<painting> = {}
   galleryItems: painting[] = []
   paintingPreviewUrl: string | ArrayBuffer | null = "assets/imgs/painting/create.png"
   timer: Subscription | null = null
-  id = 0
-  singleClickDelay = 250;
-  activeItemId = 0
-  errorMessage = ""
-  default = true
-  active = false
-  showGallery = false
+  
   clickTimeout: any;
 
   constructor(
@@ -79,9 +84,9 @@ export class PaintingComponent {
     formData.append('title', this.painting.title ? this.painting.title : '')
     formData.append('price', String(this.painting.price))
     formData.append('des', this.painting.des ? this.painting.des : '')
+    formData.append('size', `${this.width}x${this.height}`)
     this.active = true
     if (this.id == 0) {
-      console.log("create")
       this.req.Post<painting>(`${environment.apiUrl}/painting`, formData).subscribe(
         data => {
           if (data) {
@@ -89,6 +94,8 @@ export class PaintingComponent {
             this.galleryItems.push({...data, imgPath: `${environment.apiUrl}/static/imgs/paintings/${data.imgPath}` })
             this.painting = {}
             this.img.nativeElement.value = ''
+            this.width = ''
+            this.height = ''
             this.paintingPreviewUrl = "assets/imgs/painting/create.png"
             this.active = false
             this.default = true
@@ -110,6 +117,8 @@ export class PaintingComponent {
             }
             this.painting = {}
             this.img.nativeElement.value = ''
+            this.width = ''
+            this.height = ''
             this.paintingPreviewUrl = "assets/imgs/painting/create.png"
             this.active = false
             this.default = true
@@ -137,6 +146,13 @@ export class PaintingComponent {
     this.paintingPreviewUrl = item.imgPath
     this.default = false
     this.id = item.id
+    if(item.size){
+      this.width = item.size.split('x')[0]
+      this.height = item.size.split('x')[1]
+    }else{
+      this.width = ''
+      this.height = ''
+    }
     this.toggleGallery()
   }
   handleClick(item: painting) {

@@ -1,13 +1,19 @@
-<div class="uploadBG">
-    <button class="formBtn" (click)="FileBg.click()">uploadBG</button>
-    <input type="file" #FileBg (change)="uploadBgFile($event)">
+<div class="mapSrc">
+    <label for="mapSrc" class="Regular">Link kaardilt:</label>
+    <textarea name="" id="mapSrc" class="Regular" [(ngModel)]="mapSrc"></textarea>
+    <button class="formBtn" (click)="changeMapSrc()" [disabled]="change">Muuda kaardi linki</button>
 </div>
+
 <div class="shift-bg">
+    <div class="uploadBG">
+        <button class="formBtn" (click)="FileBg.click()">tausta üleslaadimine</button>
+        <input type="file" #FileBg (change)="uploadBgFile($event)">
+    </div>
     <header>
-        <p>Background preview</p>
-        <p>Upload Date</p>
-        <p>status</p>
-        <p>buttons</p>
+        <p class="Middle">Tausta eelvaade</p>
+        <p class="Middle">Üleslaadimise kuupäev</p>
+        <p class="Middle">olek</p>
+        <p class="Middle">nupud</p>
     </header>
     <div class="row" *ngFor="let item of backgrounds$ | async; trackBy: trackByFn">
         <img [src]="item.path" alt="">
@@ -15,6 +21,6 @@
         <div class="toggle-btn">
             <input type="checkbox" (change)="toggleBackgroundStatus(item)" [checked]="item.status">
         </div>
-        <button class="delete" (click)="deleteBackground(item.id)">delete</button>
+        <button class="delete" (click)="deleteBackground(item.id)">kustutada</button>
     </div>
 </div>

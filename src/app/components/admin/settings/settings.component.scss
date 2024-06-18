@@ -3,17 +3,86 @@
     width: 95%;
     margin: auto;
 }
+.mapSrc {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 20px auto;
+    @media (max-width: 1200px){
+        width: 70% !important;
+    }
+    @media (max-width: 800px){
+        width: 90% !important;
+        label{
+            width: 30% !important;   
+        }
+        textarea{
+            width: 65% !important;
+        }
+        button{
+            width: max-content !important;
+        }
+    }
+    label{
+        width: 20%;
+        text-align: end;
+    }
+    textarea {
+        width: 55%;
+        background: none;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid black;
+        min-height: 10svh;
+    }
+    button{
+        width: 20%;
+        align-self: end;
+    }
+}
 .uploadBG {
+    position: absolute;
+    right: 0px;
     display: flex;
     justify-content: end;
     margin-top: 20px;
     margin-bottom: 10px;
+    @media (max-width: 1200px){
+       position: static !important;
+    }
     input {
         display: none;
     }
 }
 .shift-bg {
+    position: relative;
     width: 100%;
+    @media (max-width: 1200px) {
+        @media (orientation: portrait) {
+            header {
+                width: 100% !important;
+                p:nth-child(2) {
+                    display: none;
+                }
+            }
+            .row {
+                width: 100% !important;
+                p {
+                    display: none;
+                }
+            }
+        }
+        @media (orientation: landscape) {
+            header {
+                width: 80% !important;
+            }
+            .row {
+                width: 80% !important;
+            }
+        }
+    }
     header {
         display: flex;
         justify-content: space-between;
@@ -22,8 +91,7 @@
         margin: auto;
         p {
             margin: 0px;
-            font-size: calc($size-index * 1.1);
-            &::first-letter{
+            &::first-letter {
                 text-transform: uppercase;
             }
             &:first-child {
@@ -43,7 +111,7 @@
         align-items: center;
         width: 50%;
         margin: 10px auto;
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.4);
         backdrop-filter: blur(4px);
         box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
         border-radius: 10px;
@@ -59,14 +127,12 @@
         }
         p {
             text-align: center;
-            font-size: calc($size-index * .9);
         }
         .toggle-btn {
             display: flex;
             justify-content: center;
         }
         .delete {
-            font-size: calc($size-index * 0.7);
             background-color: red;
             border-radius: 5px;
             padding: 10px 30px;

@@ -58,7 +58,9 @@ export class ProfileComponent {
     formData.append('name', this.user.name)
     formData.append('email', this.user.email)
     formData.append('phone', this.user.phone)
-    formData.append('password', this.user.password)
+    if(this.user.password){
+      formData.append('password', this.user.password)
+    }
     formData.append('text', this.user.text)
     this.update = true
     this.req.Patch(`${environment.apiUrl}/user/1`, formData).subscribe(data => {

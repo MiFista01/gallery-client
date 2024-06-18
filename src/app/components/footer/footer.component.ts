@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { environment } from '@env';
+import { TranslateModule } from '@ngx-translate/core';
 import { RequestsService } from '@services/requests.service';
 interface profile {
   name?: string,
@@ -14,7 +15,7 @@ interface profile {
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })

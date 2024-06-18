@@ -1,39 +1,54 @@
 <footer>
-    <div class="user">
-      <div class="parting">
-        <h3>Thank you for visiting our gallery!</h3>
-        <p>Thank you for taking the time to familiarize yourself with our work. We always welcome new visitors and your feedback.</p>
-      </div>
-      <div class="map">
-        <iframe *ngIf="safeSrc" [src]="safeSrc" style="border:0;" allowfullscreen="" loading="lazy"referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <div class="routes">
-        <h3>Links</h3>
-        <ul>
-          <li><a [routerLink]="[ '/about']">About</a></li>
-          <li><a [routerLink]="[ '/gallery']">Gallery</a></li>
-          <li><a [routerLink]="[ '/news']">News</a></li>
-        </ul>
-      </div>
-      <div class="contacts">
-        <h3>Contacts:</h3>
-        <ul>
-          <li><p>Phone: <a href="tel:{{user.phone}}">{{user.phone}}</a></p></li>
-          <li><p>Email: <a href="mailto:{{user.email}}">{{user.email}}</a></p></li>
-        </ul>
-      </div>
+  <div class="user">
+    <div class="parting">
+      <h3 class="Big">{{ 'footer.title' | translate }}</h3>
+      <p class="Regular">{{ 'footer.text' | translate }}</p>
     </div>
-    <div class="developer">
-      <p>Username: MiFista</p>
-      <div class="contacts">
-        <ul>
-          <li><p>Phone: <a href="tel:+37259024698">+37259024698</a></p></li>
-          <li><p>Email: <a href="mailto:aleksei22891@gmail.com">aleksei22891&#64;gmail.com</a></p></li>
-          <li><a href="https://vk.com/aleks3001" target="_blank"><img src="assets/imgs/dev/vk-social-logotype.svg" alt=""></a></li>
-          <li><a href="https://github.com/MiFista01" target="_blank"><img src="assets/imgs/dev/Octicons-mark-github.svg" alt=""></a></li>
-          <li><a href="https://mifista.itch.io/" target="_blank"><img src="assets/imgs/dev/itch-io.svg" alt=""></a></li>
-        </ul>
-      </div>
+    <div class="map">
+      <iframe *ngIf="safeSrc" [src]="safeSrc" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-  </footer>
-  
+    <div class="routes">
+      <h3 class="Big">{{ 'footer.links' | translate }}:</h3>
+      <ul class="Regular">
+        <li><a [routerLink]="[ '/about']">{{ 'header.btns.about' | translate }}</a></li>
+        <li><a [routerLink]="[ '/gallery']">{{ 'header.btns.gallery' | translate }}</a></li>
+        <li><a [routerLink]="[ '/news']">{{ 'header.btns.news' | translate }}</a></li>
+      </ul>
+    </div>
+    <div class="contacts">
+      <h3 class="Big">{{ 'footer.contacts.title' | translate }}:</h3>
+      <ul class="Regular">
+        <li>
+          <p>{{ 'footer.contacts.phone' | translate }}: <a href="tel:{{user.phone}}">{{user.phone !=
+              "null"?user.phone:""}}</a></p>
+        </li>
+        <li>
+          <p>{{ 'footer.contacts.email' | translate }}: <a href="mailto:{{user.email}}">{{user.email!=
+              "null"?user.email:""}}</a></p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="developer">
+    <p class="Regular">{{ 'footer.develop.developer' | translate }}: MiFista</p>
+    <div class="contacts">
+      <ul class="Regular">
+        <li>
+          <p>{{ 'footer.develop.phone' | translate }}: <a href="tel:+37259024698">+37259024698</a></p>
+        </li>
+        <li>
+          <p>{{ 'footer.develop.email' | translate }}: <a href="mailto:aleksei22891@gmail.com">aleksei22891&#64;gmail.com</a></p>
+        </li>
+      </ul>
+      <ul class="imgs-links">
+        <li class="img-link"><a href="https://vk.com/aleks3001" target="_blank"><img
+              src="assets/imgs/dev/vk-social-logotype.svg" alt=""></a></li>
+        <li class="img-link"><a href="https://github.com/MiFista01" target="_blank"><img
+              src="assets/imgs/dev/Octicons-mark-github.svg" alt=""></a></li>
+        <li class="img-link"><a href="https://mifista.itch.io/" target="_blank"><img src="assets/imgs/dev/itch-io.svg"
+              alt=""></a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

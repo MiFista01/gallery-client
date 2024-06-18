@@ -1,0 +1,85 @@
+{
+    "explorer.confirmDelete": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "explorer.confirmDragAndDrop": false,
+    "git.enableSmartCommit": true,
+    "http.proxyAuthorization": null,
+    "phpserver.phpPath": "C:/xampp/php/php.exe",
+    "phpserver.router": "",
+    "phpserver.phpConfigPath": "",
+    "php.executablePath": "C:/xampp/php/php.exe",
+    "workbench.editor.navigationScope": "editor",
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "editor.gotoLocation.multipleTypeDefinitions": "goto",
+    "emmet.excludeLanguages": [],
+    "git.confirmSync": false,
+    "editor.gotoLocation.multipleReferences": "goto",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.port": 3000,
+    "git.ignoreWindowsGit27Warning": true,
+    "diffEditor.wordWrap": "on",
+    "editor.wordWrap": "on",
+    "settingsSync.ignoredExtensions": [
+        "vscjava.vscode-java-pack"
+    ],
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "editor.fontSize": 16,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+
+    },
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "[xml]": {
+        "editor.defaultFormatter": "j69.ejs-beautify"
+    },
+    "workbench.startupEditor": "none",
+    "emmet.preferences": {
+        "output.inlineBreak": 1
+    },
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "editor.inlineSuggest.enabled": false,
+    "editor.suggest.preview": true,
+    "editor.linkedEditing": true,
+    "explorer.confirmPasteNative": false,
+    "editor.largeFileOptimizations": false,
+    "svg.preview.transparencyGrid": false,
+    "svg.preview.boundingBox": true,
+    "files.autoSave": "afterDelay",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "aeschli.vscode-css-formatter"
+    },
+    "codium.codeCompletion.enable": true,
+    "path-intellisense.autoTriggerNextSuggestion": true,
+    "path-intellisense.ignoreTsConfigBaseUrl": true,
+    "path-intellisense.extensionOnImport": true,
+    "path-intellisense.showHiddenFiles": true,
+    "path-intellisense.mappings": {
+        "assets": "${workspaceRoot}/src/assets",
+    },
+    "workbench.productIconTheme": "materialiconic-product-icons",
+    "workbench.colorTheme": "OM Theme (Night Owl Italic)",
+    "workbench.settings.applyToAllProfiles": [
+        
+    ]
+}
