@@ -1,7 +1,7 @@
 <img [src]="user.avatar" alt="" class="avatar">
 <div class="user-data">
-    <h2 class="Large">Minust</h2>
-    <p class="text Regular">{{user.text}}</p>
-    <p class="Regular">Meil: {{user.email}}</p>
-    <p class="Regular">Telefon: {{user.phone}}</p>
+    <h2 class="Large">{{ 'common.about.title' | translate }}</h2>
+    <p class="text Regular">{{user.showText != "null"? user.showText: ""}}</p>
+    <p class="Regular">{{ 'common.about.email' | translate }}: {{user.email != "null"? user.email: ""}}</p>
+    <p class="Regular">{{ 'common.about.phone' | translate }}: {{user.phone != "null"? user.phone: ""}}</p>
 </div>

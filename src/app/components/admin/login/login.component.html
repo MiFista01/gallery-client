@@ -1,6 +1,6 @@
 <div class="login">
-    <h2 class="Big">Sisselogimisvorm</h2>
-    <input type="text" class="Regular" placeholder="Nimi või email" [(ngModel)]="user">
-    <input type="password" class="Regular" placeholder="Parool" [(ngModel)]="password">
-    <button class="formBtn Regular" (click)="login()">Esita</button>
+    <h2 class="Big">{{ 'admin.login.title' | translate }}</h2>
+    <input type="text" class="Regular" placeholder="{{ 'admin.login.userPlaceHolder' | translate }}" [(ngModel)]="user">
+    <input type="password" class="Regular" placeholder="{{ 'admin.login.passwordPlaceHolder' | translate }}" [(ngModel)]="password">
+    <button class="formBtn Regular" (click)="login()">{{ 'admin.login.btn' | translate }}</button>
 </div>

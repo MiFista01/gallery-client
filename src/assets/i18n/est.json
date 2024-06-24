@@ -1,0 +1,124 @@
+{
+    "header": {
+        "logoName": "Tatiana"
+    },
+    "common": {
+        "header": {
+            "btns": {
+                "about": "minust",
+                "gallery": "galerii",
+                "news": "uudised"
+            }
+        },
+        "home": {
+            "popularTitle": "Kõige populaarsemad",
+            "lastAddedTitle": "Viimati lisatud",
+            "newsTitle": "Viimati lisatud uudised"
+        },
+        "about": {
+            "title": "Minust",
+            "phone": "Telefon",
+            "email": "E-post"
+        },
+        "gallery": {
+            "searchPlaceholder": "Otsi maali nime järgi"
+        },
+        "galleryItem": {
+            "painting": {
+                "size": "Maali suurus",
+                "price": "Maali hind",
+                "des": "Kirjeldus"
+            },
+            "form": {
+                "title": "Esita tellimus",
+                "placeholders": {
+                    "name": "Eesnimi",
+                    "lastName": "Perekonnanimi",
+                    "address": "Aadress",
+                    "email": "E-post",
+                    "code": "Sihtnumber",
+                    "city": "Linn",
+                    "phone": "Telefon",
+                    "wishes": "Kirjuta oma soovid maali kohta kunstnikule siia"
+                },
+                "btn": "Saada"
+            }
+        },
+        "news": {
+            "searchPlaceHolder": "Otsi uudiseid pealkirja järgi"
+        },
+        "newsItem": {
+            "create": "Loodud",
+            "update": "Uuendatud"
+        }
+    },
+    "admin": {
+        "header": {
+            "btns": {
+                "profile": "Profiil",
+                "paintings": "Maalid",
+                "news": "Uudised",
+                "settings": "Seaded",
+                "logout": "Logi välja"
+            }
+        },
+        "login": {
+            "title": "Sisselogimise vorm",
+            "userPlaceHolder": "Nimi või e-post",
+            "passwordPlaceHolder": "Parool",
+            "btn": "Saada"
+        },
+        "profile": {
+            "name": "Eesnimi",
+            "email": "E-post",
+            "phone": "Telefon",
+            "password": "Parool",
+            "des": "Kirjelda ennast kui kunstnikku",
+            "formBtn": "Esita"
+        },
+        "painting": {
+            "title": "Maali pealkiri",
+            "price": "Hind",
+            "titleDimension": "Maali mõõtmed",
+            "width": "Laius",
+            "height": "Kõrgus",
+            "des": "Maali kirjeldus",
+            "formBtn":"Esita"
+        },
+        "news": {
+            "title": "Uudiste pealkiri",
+            "text": "Uudiste tekst",
+            "formBtn": "Esita"
+        },
+        "settings": {
+            "map": "Määra kaardi allikas",
+            "mapBtn": "Muuda aadressi",
+            "uploadBG": "laadi taust üles",
+            "header": {
+                "preview": "Tausta eelvaade",
+                "dateDownload": "Allalaadimise kuupäev",
+                "status": "Olek",
+                "btn": "Nupp"
+            }
+        }
+    },
+    "footer": {
+        "title": "Aitäh, et külastasite meie galeriid!",
+        "text": "Täname, et leidsite aega meie tööga tutvumiseks. Meil on alati hea meel uute külastajate ja teie tagasiside üle.",
+        "links": "Lingid",
+        "contacts": {
+            "title": "Kontaktid",
+            "phone": "Telefon",
+            "email": "E-post"
+        },
+        "develop": {
+            "developer": "Arendaja",
+            "phone": "Telefon",
+            "email": "E-post"
+        }
+    },
+    "errors": {
+        "emptyName": "Nime väli ei tohi olla tühi",
+        "emptyEmail": "E-posti väli ei tohi olla tühi"
+    }
+}

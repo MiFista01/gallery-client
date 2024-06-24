@@ -55,11 +55,11 @@
     align-items: center;
 }
 .gallery-item {
-    position: sticky;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    flex-grow: 1;
     width: 27%;
     backdrop-filter: blur(4px);
     border-radius: 5px;

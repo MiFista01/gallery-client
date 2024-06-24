@@ -35,6 +35,9 @@ footer {
     .contacts {
       width: 20%;
       flex-grow: 1;
+      a{
+        display: inline !important;
+      }
     }
     .routes,
     .contacts {
@@ -58,8 +61,11 @@ footer {
           }
           a {
             text-decoration: none;
+            display: block;
             color: black;
-            text-transform: capitalize;
+            &::first-letter {
+              text-transform: capitalize;
+            }
           }
         }
       }

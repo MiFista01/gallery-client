@@ -3,16 +3,25 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { environment } from '@env';
+import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '@services/language.service';
 import { RequestsService } from '@services/requests.service';
 import { IAlbum, Lightbox, LightboxModule } from 'ngx-lightbox';
 import { forkJoin, map, Subscription, switchMap, timer } from 'rxjs';
 interface painting {
   id: number
   title: string
+  rusTitle: string
+  estTitle: string
   des: string
+  rusDes: string
+  estDes: string
   price: number
+  img: any
   imgPath: string
   size: string
+  showTitle: string
+  showDes: string
 }
 interface Order {
   name: string;
@@ -27,12 +36,13 @@ interface Order {
 @Component({
   selector: 'app-gallery-item',
   standalone: true,
-  imports: [CommonModule, RouterModule, LightboxModule, FormsModule],
+  imports: [CommonModule, RouterModule, LightboxModule, FormsModule, TranslateModule],
   templateUrl: './gallery-item.component.html',
   styleUrl: './gallery-item.component.scss'
 })
 export class GalleryItemComponent {
-
+  private subscriptionPainting: Subscription | undefined;
+  private subscriptionPaintings: Subscription | undefined;
   painting: Partial<painting> | null = {}
   allPaintings: painting[] = []
   private _album: IAlbum[] = [];
@@ -48,7 +58,8 @@ export class GalleryItemComponent {
   constructor(
     private readonly req: RequestsService,
     private route: ActivatedRoute,
-    private _lightbox: Lightbox
+    private _lightbox: Lightbox,
+    private language: LanguageService
   ) { }
   ngOnInit(): void {
     this.route.paramMap.pipe(
@@ -59,7 +70,6 @@ export class GalleryItemComponent {
           return forkJoin({
             painting: this.req.Get<painting>(`${environment.apiUrl}/painting/${id}`).pipe(
               map(data => {
-
                 if (data === null) {
                   return null
                 }
@@ -81,13 +91,18 @@ export class GalleryItemComponent {
       })
     ).subscribe(({ painting, allPaintings }) => {
       this.painting = painting;
-      this._album = [{
-        src: painting?.imgPath ? painting?.imgPath : "",
-        thumb: painting?.imgPath ? painting?.imgPath : "",
-        caption: painting?.title
-      }]
-
+      this.subscriptionPainting= this.language.langue$.subscribe(data => {
+        this.language.updateLanguageFields<painting>([this.painting as painting], data, { showTitle: 'title', showDes: 'des' })
+        this._album = [{
+          src: painting?.imgPath ? painting?.imgPath : "",
+          thumb: painting?.imgPath ? painting?.imgPath : "",
+          caption: painting?.showTitle
+        }]
+      })
       this.allPaintings = allPaintings;
+      this.subscriptionPainting = this.language.langue$.subscribe(data => {
+        this.language.updateLanguageFields<painting>(allPaintings, data, { showTitle: 'title', showDes: 'des' })
+      })
       this.placeArray = allPaintings.findIndex(value => { return value.id == painting?.id })
     });
   }
@@ -129,5 +144,9 @@ export class GalleryItemComponent {
         }
       })
     }
+  }
+  ngOnDestroy(): void {
+    this.subscriptionPainting?.unsubscribe()
+    this.subscriptionPaintings?.unsubscribe()
   }
 }

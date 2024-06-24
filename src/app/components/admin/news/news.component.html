@@ -1,7 +1,8 @@
 <div class="window" [ngClass]="{'show':showNewsGallery}">
     <div class="bg" (click)="toggleNewsGallery()"></div>
     <div class="body">
-        <div class="gallery-item" *ngFor="let item of newsArray" (click)="handleClick(item)" [ngClass]="{'active': activeItemId == item.id}">
+        <div class="gallery-item" *ngFor="let item of newsArray" (click)="handleClick(item)"
+            [ngClass]="{'active': activeItemId == item.id}">
             <img src="./assets/imgs/painting/delete.png" class="btn-delete" alt="" (click)="deleteNews(item.id)">
             <h3 class="Middle">{{item.title}}</h3>
         </div>
@@ -9,13 +10,42 @@
 </div>
 <div class="adminForm">
     <div class="img" [ngClass]="{'default': default}" (click)="poster.click()">
-        <img [src]="newsPreviewUrl" alt="" >
+        <img [src]="newsPreviewUrl" alt="">
         <input type="file" #poster (change)="setImg($event)">
     </div>
     <div class="fields">
-        <input class="Regular" type="text" placeholder="Uudise pealkiri" required [(ngModel)]="news.title">
-        <textarea class="Regular" name="" id="" placeholder="Uudiste tekst" required [(ngModel)]="news.text"></textarea>
-        <button class="formBtn Regular" [disabled]="active" (click)="submitNews()">Esita</button>
+
+        <div class="swiper swiper-container" #titleSwiper>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <input class="Regular" type="text" placeholder="{{ 'admin.news.title' | translate }}(eng)" required
+                        [(ngModel)]="news.title">
+                </div>
+                <div class="swiper-slide">
+                    <input class="Regular" type="text" placeholder="{{ 'admin.news.title' | translate }}(ru)" required
+                        [(ngModel)]="news.rusTitle">
+                </div>
+                <div class="swiper-slide">
+                    <input class="Regular" type="text" placeholder="{{ 'admin.news.title' | translate }}(est)" required
+                        [(ngModel)]="news.estTitle">
+                </div>
+            </div>
+        </div>
+        <div class="swiper swiper-container" #textSwiper>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <textarea class="Regular" name="" id="" placeholder="{{ 'admin.news.text' | translate }}(eng)" required [(ngModel)]="news.text"></textarea>
+                </div>
+                <div class="swiper-slide">
+                    <textarea class="Regular" name="" id="" placeholder="{{ 'admin.news.text' | translate }}(ru)" required [(ngModel)]="news.rusText"></textarea>
+                </div>
+                <div class="swiper-slide">
+                    <textarea class="Regular" name="" id="" placeholder="{{ 'admin.news.text' | translate }}(est)" required [(ngModel)]="news.estText"></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <button class="formBtn Regular" [disabled]="active" (click)="submitNews()">{{ 'admin.news.formBtn' | translate }}</button>
     </div>
 </div>
 <div class="btn-window-toggle">

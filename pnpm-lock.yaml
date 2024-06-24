@@ -38,6 +38,9 @@ importers:
       '@ngx-translate/http-loader':
         specifier: ^8.0.0
         version: 8.0.0(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.6))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.6))(@ngx-translate/core@15.0.0(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.6))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.6))(rxjs@7.8.1))(rxjs@7.8.1)
+      ngx-cookie-service:
+        specifier: ^18.0.0
+        version: 18.0.0(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.6))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.6))
       ngx-lightbox:
         specifier: ^3.0.0
         version: 3.0.0(@types/file-saver@2.0.7)
@@ -2891,6 +2894,12 @@ packages:
 
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+
+  ngx-cookie-service@18.0.0:
+    resolution: {integrity: sha512-hkkUckzZTXXWtFgvVkT2hg6mwYMLXioXDZWBsVCOy9gYkADjsj0N5VViO7eo2izQ0VcMPd/Etog1trf/T4oZMQ==}
+    peerDependencies:
+      '@angular/common': ^18.0.0-rc.0
+      '@angular/core': ^18.0.0-rc.0
 
   ngx-filesaver@14.0.0:
     resolution: {integrity: sha512-YnSbruOprSpcXZiuhnJ+AannRnSqRWiL0HIlDdwPd48DZYpuU0BTvSNmFj5oFbwLA0RFoOv2EkgedW4k2DEpYA==}
@@ -7063,6 +7072,12 @@ snapshots:
   negotiator@0.6.3: {}
 
   neo-async@2.6.2: {}
+
+  ngx-cookie-service@18.0.0(@angular/common@17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.6))(rxjs@7.8.1))(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.6)):
+    dependencies:
+      '@angular/common': 17.3.10(@angular/core@17.3.10(rxjs@7.8.1)(zone.js@0.14.6))(rxjs@7.8.1)
+      '@angular/core': 17.3.10(rxjs@7.8.1)(zone.js@0.14.6)
+      tslib: 2.6.2
 
   ngx-filesaver@14.0.0(@types/file-saver@2.0.7)(file-saver@2.0.5):
     dependencies:

@@ -41,7 +41,7 @@ header {
     .routes {
         display: flex;
         padding-bottom: 10px;
-        @media (max-width: 800px) {
+        @media (max-width: 1050px) {
             display: none;
         }
         & > div {
@@ -63,16 +63,15 @@ header {
     .mobile-routes {
         position: relative;
         display: flex;
-        flex-direction: column;
         max-height: 70svh;
-        @media (min-width: 801px) {
+        @media (min-width: 1051px) {
             display: none;
         }
         & > ul {
             position: absolute;
             top: 100%;
             width: max-content;
-            transform: translate(-70%, 0%);
+            transform: translate(-20%, 0%);
             list-style: none;
             backdrop-filter: blur(5px);
             padding: 15px 30px;
@@ -80,11 +79,17 @@ header {
             box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
             background-color: rgba(255, 255, 255, 0.7);
             margin: 0;
-            transition-duration: .6s;
+            transition-duration: 0.6s;
+            li{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
             a,
             p {
                 transition-duration: 0.3s;
                 margin: 0 !important;
+                width: 100%;
                 &:not(.active):hover {
                     scale: 1.05;
                     text-shadow: 0px 0px 1px black;
@@ -96,8 +101,37 @@ header {
             }
         }
     }
+    .languages {
+        position: relative;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: calc($size-index * 2.5);
+        z-index: 2;
+        img {
+            position: absolute;
+            height: calc($size-index * 2);
+            transition-duration: 0.3s;
+            transition-property: max-height, scale;
+            transform-origin: center;
+            cursor: pointer;
+            &:not(.activeLanguage) {
+                max-height: 0px;
+            }
+            &:hover{
+                scale: 1.1;
+            }
+        }
+        @for $i from 1 through 3 {
+            // Создаем стили для каждого изображения
+            img:nth-child(#{$i}) {
+                bottom: calc($size-index * -2 * ($i - 1) - ($size-index / 2));
+            }
+        }
+    }
 }
-.hideList{
+.hideList {
     transform: translate(100%, 0%) !important;
 }
 #top-line,
@@ -122,7 +156,6 @@ svg {
     }
 }
 .burger-active {
-    
     #top-line {
         animation: down-rotate 0.6s ease-out both;
     }

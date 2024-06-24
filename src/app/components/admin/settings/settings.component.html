@@ -1,19 +1,18 @@
 <div class="mapSrc">
-    <label for="mapSrc" class="Regular">Link kaardilt:</label>
-    <textarea name="" id="mapSrc" class="Regular" [(ngModel)]="mapSrc"></textarea>
-    <button class="formBtn" (click)="changeMapSrc()" [disabled]="change">Muuda kaardi linki</button>
+    <textarea name="" id="mapSrc" class="Regular" [(ngModel)]="mapSrc" placeholder="{{ 'admin.settings.map' | translate }}"></textarea>
+    <button class="formBtn" (click)="changeMapSrc()" [disabled]="change">{{ 'admin.settings.mapBtn' | translate }}</button>
 </div>
 
 <div class="shift-bg">
     <div class="uploadBG">
-        <button class="formBtn" (click)="FileBg.click()">tausta üleslaadimine</button>
-        <input type="file" #FileBg (change)="uploadBgFile($event)">
+        <button class="formBtn" (click)="FileBg.click()">{{ 'admin.settings.uploadBG' | translate }}</button>
+        <input type="file" #FileBg (change)="uploadBgFile($event)" accept="image/*">
     </div>
     <header>
-        <p class="Middle">Tausta eelvaade</p>
-        <p class="Middle">Üleslaadimise kuupäev</p>
-        <p class="Middle">olek</p>
-        <p class="Middle">nupud</p>
+        <p class="Middle">{{ 'admin.settings.header.preview' | translate }}</p>
+        <p class="Middle">{{ 'admin.settings.header.dateDownload' | translate }}</p>
+        <p class="Middle">{{ 'admin.settings.header.status' | translate }}</p>
+        <p class="Middle">{{ 'admin.settings.header.btn' | translate }}</p>
     </header>
     <div class="row" *ngFor="let item of backgrounds$ | async; trackBy: trackByFn">
         <img [src]="item.path" alt="">

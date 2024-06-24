@@ -2,13 +2,21 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { environment } from '@env';
+import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '@services/language.service';
 import { RequestsService } from '@services/requests.service';
 import { IAlbum, Lightbox, LightboxModule } from 'ngx-lightbox';
-import { forkJoin, map, switchMap } from 'rxjs';
+import { forkJoin, map, Subscription, switchMap } from 'rxjs';
 interface news {
-  id?: number
+  id: number
   title: string
+  rusTitle: string
+  estTitle: string
   text: string
+  rusText: string
+  estText: string
+  showTitle: string
+  showText: string
   poster: string | null
   createdAt: string
   updatedAt: string
@@ -16,11 +24,13 @@ interface news {
 @Component({
   selector: 'app-news-view-item',
   standalone: true,
-  imports: [CommonModule, RouterModule, LightboxModule],
+  imports: [CommonModule, RouterModule, LightboxModule, TranslateModule],
   templateUrl: './news-view-item.component.html',
   styleUrl: './news-view-item.component.scss'
 })
 export class NewsViewItemComponent {
+  private subscriptionNews: Subscription | undefined;
+  private subscriptionNewsArray: Subscription | undefined;
   id = 0
   news: Partial<news> | null = {}
   allNews: news[] = []
@@ -29,7 +39,8 @@ export class NewsViewItemComponent {
   constructor(
     private readonly req: RequestsService,
     private route: ActivatedRoute,
-    private _lightbox: Lightbox
+    private _lightbox: Lightbox,
+    private language: LanguageService
   ) { }
   ngOnInit(): void {
     this.route.paramMap.pipe(
@@ -62,12 +73,19 @@ export class NewsViewItemComponent {
       })
     ).subscribe(({ news, allNews }) => {
       this.news = news;
-      this._album = [{
-        src: news?.poster? news?.poster:"" ,
-        thumb: news?.poster? news?.poster:"",
-        caption: news?.title
-      }]
+      
+      this.subscriptionNews = this.language.langue$.subscribe(data => {
+        this.language.updateLanguageFields<news>([this.news as news], data, { showTitle: 'title', showText: 'text' })
+        this._album = [{
+          src: news?.poster ? news?.poster : "",
+          thumb: news?.poster ? news?.poster : "",
+          caption: news?.title
+        }]
+      })
       this.allNews = allNews;
+      this.subscriptionNewsArray = this.language.langue$.subscribe(data => {
+        this.language.updateLanguageFields<news>(allNews, data, { showTitle: 'title', showText: 'text' })
+      })
       this.placeArray = allNews.findIndex(value => { return value.id == news?.id })
     });
   }

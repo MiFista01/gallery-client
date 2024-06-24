@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterModule, Event } from '@angular/router';
 import { environment } from '@env';
 import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '@services/language.service';
 import { RequestsService } from '@services/requests.service';
 import { filter } from 'rxjs';
 
@@ -16,10 +17,18 @@ import { filter } from 'rxjs';
 export class HeaderComponent {
   isAdmin = false
   open = false
+  openLanguages = false
+  languagesIcons = {
+    eng: "./assets/imgs/languages/eng.png",
+    ru: "./assets/imgs/languages/ru.png",
+    est: "./assets/imgs/languages/est.png"
+  }
+  activeLanguage = "eng" as "eng" | "ru" | "est"
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private readonly req: RequestsService
+    private readonly req: RequestsService,
+    private language: LanguageService
   ) { }
   ngOnInit() {
     if (!this.router.url.includes("/admin") || this.router.url == "/admin/login") {
@@ -36,6 +45,9 @@ export class HeaderComponent {
         this.isAdmin = true
       }
     });
+    this.language.langue$.subscribe(data => {
+      this.activeLanguage = data
+    })
   }
   toggleBurger() {
     this.open = !this.open
@@ -47,5 +59,24 @@ export class HeaderComponent {
       },
       error: (err) => { }
     })
+  }
+  getOtherLanguages() {
+    let languagesIconsArray: { lang: "eng" | "ru" | "est", icon: string }[] = []
+    for (let i of Object.keys(this.languagesIcons)) {
+      if (i != this.activeLanguage) {
+        languagesIconsArray.push({ lang: i as "eng" | "ru" | "est", icon: this.languagesIcons[i as "eng" | "ru" | "est"] })
+      }
+    }
+    return languagesIconsArray
+  }
+  toggleLanguages() {
+    this.openLanguages = !this.openLanguages
+  }
+  changeLanguage(lang: "eng" | "ru" | "est") {
+    this.activeLanguage = lang
+    this.language.switchLanguage(this.activeLanguage)
+  }
+  trackByFnLang(index:number, item: { lang: "eng" | "ru" | "est" , icon:string}) {
+    return item.lang
   }
 }

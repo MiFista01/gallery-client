@@ -33,7 +33,9 @@
               "src/styles.scss",
               "./node_modules/ngx-lightbox/lightbox.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/swiper.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -99,7 +101,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/swiper.js"
+            ]
           }
         }
       }

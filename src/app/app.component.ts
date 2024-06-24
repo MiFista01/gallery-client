@@ -29,9 +29,9 @@ export class AppComponent {
     private bgService: BgService,
     translate: TranslateService
   ) {
-    translate.addLangs(['en', 'est', 'ru']);
-    translate.setDefaultLang('en');
-    translate.use('en');
+    translate.addLangs(['eng', 'est', 'ru']);
+    translate.setDefaultLang('eng');
+    translate.use('eng');
   }
   ngOnInit(): void {
     this.bgService.getActiveBackgrounds().subscribe(data => {

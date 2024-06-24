@@ -16,15 +16,48 @@
         <input type="file" #choicePainting (change)="setImg($event)" accept="image/*">
     </div>
     <div class="fields">
-        <input class="Regular" type="text" placeholder="Pealkiri" [(ngModel)]="painting.title">
-        <input class="Regular" type="number" placeholder="Maali hind" [(ngModel)]="painting.price">
-        <div>
-            <h3 class="Middle">Maali mõõtmed</h3>
-            <input class="Regular" type="number" placeholder="Laius" [(ngModel)]="width">
-            <input class="Regular" type="number" placeholder="Kõrgus" [(ngModel)]="height">
+        <div class="swiper swiper-container" #titleSwiper>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <input class="Regular" type="text" placeholder="{{ 'admin.painting.title' | translate }}(eng)"
+                    [(ngModel)]="painting.title" tabindex="-1">
+                </div>
+                <div class="swiper-slide">
+                    <input class="Regular" type="text" placeholder="{{ 'admin.painting.title' | translate }}(rus)"
+                        [(ngModel)]="painting.rusTitle"tabindex="-1">
+                </div>
+                <div class="swiper-slide">
+                    <input class="Regular" type="text" placeholder="{{ 'admin.painting.title' | translate }}(est)"
+                        [(ngModel)]="painting.estTitle"tabindex="-1">
+                </div>
+            </div>
         </div>
-        <textarea class="Regular" name="" placeholder="Maali kirjeldus" [(ngModel)]="painting.des"></textarea>
-        <button class="formBtn Regular" [disabled]="active" (click)="submitPainting()">Esita</button>
+        <input class="Regular" type="number" placeholder="{{ 'admin.painting.price' | translate }}"
+            [(ngModel)]="painting.price">
+        <div>
+            <h3 class="Middle">{{ 'admin.painting.titleDimension' | translate }}</h3>
+            <input class="Regular" type="number" placeholder="{{ 'admin.painting.width' | translate }}"
+                [(ngModel)]="width">
+            <input class="Regular" type="number" placeholder="{{ 'admin.painting.height' | translate }}"
+                [(ngModel)]="height">
+        </div>
+        <div class="swiper swiper-container" #desSwiper>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <textarea class="Regular" name="" placeholder="{{ 'admin.painting.des' | translate }}(eng)"
+                        [(ngModel)]="painting.des" tabindex="-1"></textarea>
+                </div>
+                <div class="swiper-slide">
+                    <textarea class="Regular" name="" placeholder="{{ 'admin.painting.des' | translate }}(rus)"
+                        [(ngModel)]="painting.rusDes" tabindex="-1"></textarea>
+                </div>
+                <div class="swiper-slide">
+                    <textarea class="Regular" name="" placeholder="{{ 'admin.painting.des' | translate }}(est)"
+                        [(ngModel)]="painting.estDes" tabindex="-1"></textarea>
+                </div>
+            </div>
+        </div>
+        <button class="formBtn Regular" [disabled]="active" (click)="submitPainting()">{{ 'admin.painting.formBtn' | translate }}</button>
     </div>
 </div>
 <div class="btn-window-toggle">

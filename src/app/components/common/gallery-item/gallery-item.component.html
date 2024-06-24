@@ -1,5 +1,5 @@
 <div class="item">
-  <a class="row"
+  <a class="navBtn"
     [routerLink]="['/painting', allPaintings[placeArray-1]? allPaintings[placeArray-1].id: allPaintings[0].id]"
     [ngStyle]="{'opacity': id === allPaintings[0].id ? 0 : 1, 'pointer-events': id === allPaintings[0].id ? 'none' : ''}"
     (click)="handleChangeItem(-1)">
@@ -9,29 +9,48 @@
     <div class="painting">
       <img [src]="painting.imgPath" alt="" (click)="open()">
       <div class="fields">
-        <h2 class="Large">{{ painting.title }}</h2>
-        <p class="des Regular">Maali mõõtmed: {{ painting.size }}</p>
-        <p class="price Regular">Maali hind: {{painting.price}}€</p>
-        <p class="des Regular">Kirjeldus: {{ painting.des }}</p>
+        <h2 class="Large">{{ painting.showTitle }}</h2>
+        <p class="des Regular">{{ 'common.galleryItem.painting.size' | translate }}: {{ painting.size }}</p>
+        <p class="price Regular">{{ 'common.galleryItem.painting.price' | translate }}: {{painting.price}}€</p>
+        <p class="des Regular">{{ 'common.galleryItem.painting.des' | translate }}: {{ painting.showDes }}</p>
       </div>
     </div>
     <div class="order">
-      <input type="text" class="Regular" [ngClass]="{'not-filled': order.name.length == 0}" placeholder="First name" name="name" [(ngModel)]="order.name">
-      <input type="text" class="Regular" [ngClass]="{'not-filled': order.lastName.length == 0}" placeholder="Last name" name="last-name" [(ngModel)]="order.lastName">
-      <input type="text" class="Regular" [ngClass]="{'not-filled': order.address.length == 0}" placeholder="Address" name="address" [(ngModel)]="order.address">
-      <input type="email" class="Regular" [ngClass]="{'not-filled': order.email.length == 0}" placeholder="Email" name="email" [(ngModel)]="order.email">
-      <input type="text" class="Regular" [ngClass]="{'not-filled': order.zip.length == 0}" placeholder="Zip / Postal Code" name="zip" [(ngModel)]="order.zip">
-      <input type="text" class="Regular" [ngClass]="{'not-filled': order.city.length == 0}" placeholder="City" name="city" [(ngModel)]="order.city">
-      <input type="tel" class="Regular" [ngClass]="{'not-filled': order.phone.length == 0}" placeholder="Telefon" name="phone" [(ngModel)]="order.phone">
-      <textarea class="Regular" name="wishes" id="" [(ngModel)]="order.wishes" placeholder="Kirjutage siia oma soovid maali kohta kunstnikule"></textarea>
-      <button class="formBtn message Regular" [ngClass]="{'hide-message': !showMessage}" [disabled]="send" [attr.message]="message" (click)="submitOrder()">esita</button>
+      <h2 class="Big">{{ 'common.galleryItem.form.title' | translate }}</h2>
+      <div class="order-fields slide">
+        <input type="text" class="Regular" [ngClass]="{'not-filled': order.name.length == 0}"
+          placeholder="{{ 'common.galleryItem.form.placeholders.name' | translate }}" name="name"
+          [(ngModel)]="order.name">
+        <input type="text" class="Regular" [ngClass]="{'not-filled': order.lastName.length == 0}"
+          placeholder="{{ 'common.galleryItem.form.placeholders.lastName' | translate }}" name="last-name"
+          [(ngModel)]="order.lastName">
+        <input type="text" class="Regular" [ngClass]="{'not-filled': order.address.length == 0}"
+          placeholder="{{ 'common.galleryItem.form.placeholders.address' | translate }}" name="address"
+          [(ngModel)]="order.address">
+        <input type="email" class="Regular" [ngClass]="{'not-filled': order.email.length == 0}"
+          placeholder="{{ 'common.galleryItem.form.placeholders.email' | translate }}" name="email"
+          [(ngModel)]="order.email">
+        <input type="text" class="Regular" [ngClass]="{'not-filled': order.zip.length == 0}"
+          placeholder="{{ 'common.galleryItem.form.placeholders.code' | translate }}" name="zip"
+          [(ngModel)]="order.zip">
+        <input type="text" class="Regular" [ngClass]="{'not-filled': order.city.length == 0}"
+          placeholder="{{ 'common.galleryItem.form.placeholders.city' | translate }}" name="city"
+          [(ngModel)]="order.city">
+        <input type="tel" class="Regular" [ngClass]="{'not-filled': order.phone.length == 0}"
+          placeholder="{{ 'common.galleryItem.form.placeholders.phone' | translate }}" name="phone"
+          [(ngModel)]="order.phone">
+        <textarea class="Regular" name="wishes" id="" [(ngModel)]="order.wishes"
+          placeholder="{{ 'common.galleryItem.form.placeholders.wishes' | translate }}"></textarea>
+        <button class="formBtn message Regular" [ngClass]="{'hide-message': !showMessage}" [disabled]="send"
+          [attr.message]="message" (click)="submitOrder()">{{ 'common.galleryItem.form.btn' | translate }}</button>
+      </div>
     </div>
   </div>
   <div class="not-exist" *ngIf="painting == null">
     <h2 class="Colossus">Painting was deleted</h2>
     <p class="Large">The picture was removed for some reason. We bring our deepest changes</p>
   </div>
-  <a class="row"
+  <a class="navBtn"
     [routerLink]="['/painting', allPaintings[placeArray+1]? allPaintings[placeArray+1].id: allPaintings[allPaintings.length - 1].id]"
     [ngStyle]="{'opacity': id === allPaintings[allPaintings.length - 1].id ? 0 : 1, 'pointer-events': id === allPaintings[allPaintings.length - 1].id ? 'none' : ''}"
     (click)="handleChangeItem(1)">

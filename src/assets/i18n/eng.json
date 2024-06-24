@@ -1,0 +1,124 @@
+{
+    "header": {
+        "logoName": "Tatiana"
+    },
+    "common": {
+        "header": {
+            "btns": {
+                "about": "about",
+                "gallery": "gallery",
+                "news": "news"
+            }
+        },
+        "home": {
+            "popularTitle": "Most Popular",
+            "lastAddedTitle": "Last Added",
+            "newsTitle": "Latest added news"
+        },
+        "about": {
+            "title": "About me",
+            "phone": "Phone",
+            "email": "Email"
+        },
+        "gallery": {
+            "searchPlaceholder": "Search for a painting by name"
+        },
+        "galleryItem": {
+            "painting": {
+                "size": "Painting size",
+                "price": "Cost of the painting",
+                "des": "Description"
+            },
+            "form": {
+                "title":"Make an order",
+                "placeholders": {
+                    "name": "First name",
+                    "lastName": "Last name",
+                    "address": "Address",
+                    "email": "Email",
+                    "code": "Zip / Postal Code",
+                    "city": "City",
+                    "phone": "Phone",
+                    "wishes": "Write your wishes about the painting to the artist here"
+                },
+                "btn": "Submit"
+            }
+        },
+        "news": {
+            "searchPlaceHolder": "Search news by title"
+        },
+        "newsItem": {
+            "create": "Created at",
+            "update": "Updated at"
+        }
+    },
+    "admin": {
+        "header": {
+            "btns": {
+                "profile": "Profile",
+                "paintings": "Paintings",
+                "news": "News",
+                "settings":"Settings",
+                "logout":"Logout"
+            }
+        },
+        "login": {
+            "title": "Login form",
+            "userPlaceHolder": "Name or email",
+            "passwordPlaceHolder": "Password",
+            "btn": "Submit"
+        },
+        "profile":{
+            "name":"First name",
+            "email":"Email",
+            "phone":"Phone",
+            "password":"Password",
+            "des":"Describe yourself as an artist",
+            "formBtn": "Submit"
+        },
+        "painting":{
+            "title":"Title of the painting",
+            "price":"Price",
+            "titleDimension":"Painting dimensions",
+            "width":"Width",
+            "height":"Height",
+            "des":"Description of the picture",
+            "formBtn":"Submit"
+        },
+        "news":{
+            "title":"News headline",
+            "text":"News text",
+            "formBtn":"Submit"
+        },
+        "settings":{
+            "map":"Set the src for the map",
+            "mapBtn":"Change address",
+            "uploadBG":"upload background",
+            "header":{
+                "preview":"Background preview",
+                "dateDownload":"Date of download",
+                "status":"Status",
+                "btn":"Button"
+            }
+        }
+    },
+    "footer": {
+        "title": "Thank you for visiting our gallery!",
+        "text": "Thank you for taking the time to explore our work. We always welcome new visitors and your feedback.",
+        "links": "Links",
+        "contacts": {
+            "title": "Contacts",
+            "phone": "Phone",
+            "email": "Email"
+        },
+        "develop": {
+            "developer": "Developer",
+            "phone": "Phone",
+            "email": "Email"
+        }
+    },
+    "errors":{
+        "emptyName":"The name field cannot be empty",
+        "emptyEmail":"The email field cannot be empty"
+    }
+}

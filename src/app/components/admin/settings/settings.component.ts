@@ -4,6 +4,7 @@ import { environment } from '@env';
 import { BgService } from '@services/bg.service';
 import { RequestsService } from '@services/requests.service';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 interface bg {
   id: number;
   path: string;
@@ -16,7 +17,7 @@ interface user {
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
 })

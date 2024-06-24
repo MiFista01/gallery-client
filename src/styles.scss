@@ -59,7 +59,7 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    .row {
+    .navBtn {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -194,9 +194,9 @@ body {
         scale: 0.9;
     }
 }
-.message{
+.message {
     position: relative;
-    &:before{
+    &:before {
         content: attr(message);
         position: absolute;
         left: 50%;
@@ -204,7 +204,7 @@ body {
         width: 150%;
         transform: translate(-50%, -100%);
         pointer-events: none;
-        transition-duration: .3s;
+        transition-duration: 0.3s;
         padding: 10px;
         backdrop-filter: blur(5px);
         background-color: rgba(255, 255, 255, 0.7);
@@ -213,8 +213,8 @@ body {
         z-index: 5;
     }
 }
-.hide-message{
-    &::before{
+.hide-message {
+    &::before {
         opacity: 0;
     }
 }
@@ -299,9 +299,23 @@ body {
         overflow-x: hidden;
     }
 }
+.row {
+    display: flex;
+    width: 100%;
+}
+.end {
+    justify-content: end;
+}
+.error {
+    transition-duration: 0.3s;
+}
 .show {
     opacity: 1 !important;
     pointer-events: all !important;
+}
+.hide {
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 .btn-window-toggle {
     position: fixed;
@@ -348,7 +362,17 @@ body {
         margin: auto;
     }
 }
-
+.swiper {
+    width: 100%;
+    .swiper-slide {
+        // position: relative;
+        display: flex;
+        input,
+        textarea {
+            width: 100%;
+        }
+    }
+}
 .Colossus {
     font-size: calc($size-index * 3);
 }
@@ -374,6 +398,29 @@ body {
     font-size: calc($size-index * 0.65);
 }
 @media (max-width: 1200px) {
+    #hamburger{
+        @media (orientation: portrait) {
+            width: calc($size-index * 7) !important;
+            
+        }
+        @media (orientation: landscape) {
+            width: calc($size-index * 6) !important;
+
+        }
+    }
+    .languages {
+        width: calc($size-index * 4) !important;
+        height: calc($size-index * 4) !important;
+        img {
+            height: calc($size-index * 4) !important;
+            bottom: 0px;
+        }
+        @for $i from 1 through 3 {
+            img:nth-child(#{$i}) {
+                bottom: calc($size-index * -4 * ($i - 1)) !important;
+            }
+        }
+    }
     .adminForm {
         @media (orientation: portrait) {
             flex-direction: column;
@@ -418,7 +465,7 @@ body {
                 flex-grow: 0 !important;
             }
         }
-        .body{
+        .body {
             width: 70% !important;
             flex-wrap: wrap;
             img,
@@ -431,29 +478,29 @@ body {
     }
     .btn-window-toggle {
         img {
-            width: calc($size-index * 7) !important;
+            width: calc($size-index * 5) !important;
         }
     }
     .Colossus {
-        font-size: calc($size-index * 4.5);
-    }
-    .Giant {
         font-size: calc($size-index * 4);
     }
+    .Giant {
+        font-size: calc($size-index * 3.6);
+    }
     .Large {
-        font-size: calc($size-index * 3.2);
+        font-size: calc($size-index * 3);
     }
     .Big {
-        font-size: calc($size-index * 2.5);
+        font-size: calc($size-index * 2.3);
     }
     .Middle {
-        font-size: calc($size-index * 1.9);
+        font-size: calc($size-index * 1.7);
     }
     .Regular {
-        font-size: calc($size-index * 1.6);
+        font-size: calc($size-index * 1.4);
     }
     .Small {
-        font-size: calc($size-index * 1.3);
+        font-size: calc($size-index * 1.25);
     }
     .Tiny {
         font-size: calc($size-index * 1);
@@ -461,53 +508,53 @@ body {
 }
 @media (max-width: 800px) {
     .Colossus {
-        font-size: calc($size-index * 4);
+        font-size: calc($size-index * 3.8);
     }
     .Giant {
-        font-size: calc($size-index * 3.5);
+        font-size: calc($size-index * 3.2);
     }
     .Large {
-        font-size: calc($size-index * 3);
+        font-size: calc($size-index * 2.7);
     }
     .Big {
-        font-size: calc($size-index * 2.5);
+        font-size: calc($size-index * 2.3);
     }
     .Middle {
-        font-size: calc($size-index * 1.9);
+        font-size: calc($size-index * 1.7);
     }
     .Regular {
-        font-size: calc($size-index * 1.6);
+        font-size: calc($size-index * 1.5);
     }
     .Small {
-        font-size: calc($size-index * 1.3);
+        font-size: calc($size-index * 1);
     }
     .Tiny {
-        font-size: calc($size-index * 1);
+        font-size: calc($size-index * 0.8);
     }
 }
 @media (max-width: 600px) {
     .Colossus {
-        font-size: calc($size-index * 4.8);
+        font-size: calc($size-index * 4.3);
     }
     .Giant {
-        font-size: calc($size-index * 4);
+        font-size: calc($size-index * 3.8);
     }
     .Large {
-        font-size: calc($size-index * 3.5);
+        font-size: calc($size-index * 3.2);
     }
     .Big {
-        font-size: calc($size-index * 3);
+        font-size: calc($size-index * 2.7);
     }
     .Middle {
-        font-size: calc($size-index * 2.5);
+        font-size: calc($size-index * 2.3);
     }
     .Regular {
-        font-size: calc($size-index * 1.9);
+        font-size: calc($size-index * 1.7);
     }
     .Small {
-        font-size: calc($size-index * 1.6);
+        font-size: calc($size-index * 1.1);
     }
     .Tiny {
-        font-size: calc($size-index * 1.3);
+        font-size: calc($size-index * 0.9);
     }
 }

@@ -2,22 +2,29 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { environment } from '@env';
+import { TranslateModule } from '@ngx-translate/core';
 import { ImagePreviewService } from '@services/image-preview.service';
 import { RequestsService } from '@services/requests.service';
 import { Subscription, timer } from 'rxjs';
+declare function initSwiper(element: HTMLElement, thumb: any, mouse:boolean): void;
+
 interface painting {
   id: number
   title: string
+  rusTitle: string
+  estTitle: string
   des: string
+  rusDes: string
+  estDes: string
   price: number
   img: any
   imgPath: string
-  size:string
+  size: string
 }
 @Component({
   selector: 'app-painting',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, TranslateModule],
   templateUrl: './painting.component.html',
   styleUrl: './painting.component.scss'
 })
@@ -33,11 +40,13 @@ export class PaintingComponent {
   showGallery = false
 
   @ViewChild('choicePainting') img!: ElementRef<HTMLInputElement>;
+  @ViewChild('titleSwiper', { static: true }) title!: ElementRef<HTMLElement>;
+  @ViewChild('desSwiper', { static: true }) des!: ElementRef<HTMLElement>;
+
   painting: Partial<painting> = {}
   galleryItems: painting[] = []
   paintingPreviewUrl: string | ArrayBuffer | null = "assets/imgs/painting/create.png"
   timer: Subscription | null = null
-  
   clickTimeout: any;
 
   constructor(
@@ -51,6 +60,7 @@ export class PaintingComponent {
         return { ...data }
       })
     })
+    initSwiper(this.title.nativeElement, initSwiper(this.des.nativeElement, null, false), true)
   }
   ngOnDestroy() {
     if (this.timer) {
@@ -82,16 +92,20 @@ export class PaintingComponent {
       }
     }
     formData.append('title', this.painting.title ? this.painting.title : '')
-    formData.append('price', String(this.painting.price))
+    formData.append('rusTitle', this.painting.rusTitle ? this.painting.rusTitle : '')
+    formData.append('estTitle', this.painting.estTitle ? this.painting.estTitle : '')
+    formData.append('price', String(this.painting.price ? this.painting.price : '0'))
     formData.append('des', this.painting.des ? this.painting.des : '')
-    formData.append('size', `${this.width}x${this.height}`)
+    formData.append('rusDes', this.painting.rusDes ? this.painting.rusDes : '')
+    formData.append('estDes', this.painting.estDes ? this.painting.estDes : '')
+    formData.append('size', `${this.width ? this.width : '0'}x${this.height ? this.width : '0'}`)
     this.active = true
     if (this.id == 0) {
       this.req.Post<painting>(`${environment.apiUrl}/painting`, formData).subscribe(
         data => {
           if (data) {
             this.painting.imgPath
-            this.galleryItems.push({...data, imgPath: `${environment.apiUrl}/static/imgs/paintings/${data.imgPath}` })
+            this.galleryItems.push({ ...data, imgPath: `${environment.apiUrl}/static/imgs/paintings/${data.imgPath}` })
             this.painting = {}
             this.img.nativeElement.value = ''
             this.width = ''
@@ -146,10 +160,10 @@ export class PaintingComponent {
     this.paintingPreviewUrl = item.imgPath
     this.default = false
     this.id = item.id
-    if(item.size){
+    if (item.size) {
       this.width = item.size.split('x')[0]
       this.height = item.size.split('x')[1]
-    }else{
+    } else {
       this.width = ''
       this.height = ''
     }
@@ -168,7 +182,7 @@ export class PaintingComponent {
       }, this.singleClickDelay);
     }
   }
-  deletePainting(id:number){
+  deletePainting(id: number) {
     this.req.Delete(`${environment.apiUrl}/painting/${id}`).subscribe(data => {
       if (data) {
         const index = this.galleryItems.findIndex(value => { return value.id == id })

@@ -1,22 +1,22 @@
 <div  class="item">
-  <a class="row" [routerLink]="['/news', allNews[placeArray-1]? allNews[placeArray-1].id: allNews[0].id]"
+  <a class="navBtn" [routerLink]="['/news', allNews[placeArray-1]? allNews[placeArray-1].id: allNews[0].id]"
     [ngStyle]="{'opacity': id === allNews[0].id ? 0 : 1, 'pointer-events': id === allNews[0].id ? 'none' : ''}" (click)="handleChangeItem(-1)">
     <p class="Colossus">&#8656;</p>
   </a>
   <div class="body" *ngIf="allNews.length > 0 && news != null">
     <img [src]="news.poster" alt="" (click)="open()">
     <div class="fields">
-      <h2 class="Large">{{ news.title }}</h2>
-      <p class="text Regular">{{ news.text }}</p>
-      <p class="createdAt Regular">Created at: {{news.createdAt?.split('.')![0].replace("T"," ")}}</p>
-      <p class="createdAt Regular">Updated at: {{news.updatedAt?.split('.')![0].replace("T"," ")}}</p>
+      <h2 class="Large">{{ news.showTitle }}</h2>
+      <p class="text Regular">{{ news.showText }}</p>
+      <p class="createdAt Regular">{{ 'common.newsItem.create' | translate }}: {{news.createdAt?.split('.')![0].replace("T"," ")}}</p>
+      <p class="createdAt Regular">{{ 'common.newsItem.update' | translate }}: {{news.updatedAt?.split('.')![0].replace("T"," ")}}</p>
     </div>
   </div>
   <div class="not-exist" *ngIf="news == null">
     <h2 class="Colossus">News was deleted</h2>
     <p class="Large">The news was removed for reasons of old age or invalidity</p>
   </div>
-  <a class="row" [routerLink]="['/news', allNews[placeArray+1]? allNews[placeArray+1].id: allNews[allNews.length - 1].id]"
+  <a class="navBtn" [routerLink]="['/news', allNews[placeArray+1]? allNews[placeArray+1].id: allNews[allNews.length - 1].id]"
     [ngStyle]="{'opacity': id === allNews[allNews.length - 1].id ? 0 : 1, 'pointer-events': id === allNews[allNews.length - 1].id ? 'none' : ''}" (click)="handleChangeItem(1)">
     <p class="Colossus">&#8658;</p>
   </a>

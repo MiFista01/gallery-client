@@ -2,19 +2,25 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { environment } from '@env';
+import { TranslateModule } from '@ngx-translate/core';
 import { ImagePreviewService } from '@services/image-preview.service';
 import { RequestsService } from '@services/requests.service';
 import { Subscription, timer } from 'rxjs';
+declare function initSwiper(element: HTMLElement, thumb: any, mouse: boolean): void;
 interface news {
   id: number
   title: string
+  rusTitle: string
+  estTitle: string
   text: string
+  rusText: string
+  estText: string
   poster: any
 }
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './news.component.html',
   styleUrl: './news.component.scss'
 })
@@ -26,6 +32,8 @@ export class NewsComponent {
   newsPreviewUrl: string | ArrayBuffer | null = "assets/imgs/painting/create.png"
   timer: Subscription | null = null
   @ViewChild('poster') poster!: ElementRef<HTMLInputElement>;
+  @ViewChild('titleSwiper', { static: true }) title!: ElementRef<HTMLElement>;
+  @ViewChild('textSwiper', { static: true }) text!: ElementRef<HTMLElement>;
   singleClickDelay = 250;
   activeItemId = 0
   default = true
@@ -44,6 +52,7 @@ export class NewsComponent {
         return { ...data }
       })
     })
+    initSwiper(this.title.nativeElement, initSwiper(this.text.nativeElement, null, false), true)
   }
   ngOnDestroy() {
     if (this.timer) {
@@ -69,6 +78,10 @@ export class NewsComponent {
     }
     formData.append('title', this.news.title ? this.news.title : '')
     formData.append('text', this.news.text ? this.news.text : '')
+    formData.append('rusTitle', this.news.rusTitle ? this.news.rusTitle : '')
+    formData.append('rusText', this.news.rusText ? this.news.rusText : '')
+    formData.append('estTitle', this.news.estTitle ? this.news.estTitle : '')
+    formData.append('estText', this.news.estText ? this.news.estText : '')
     this.active = true
     if (this.id == 0) {
       this.req.Post<news>(`${environment.apiUrl}/news`, formData).subscribe(

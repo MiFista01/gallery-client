@@ -1,11 +1,11 @@
 <aside class="news">
     <header>
-        <input type="text" class="search Middle" placeholder="Otsi uudiseid" (input)="searchNews($event)">
+        <input type="text" class="search Middle" [(ngModel)]="searchValue" placeholder="{{ 'common.news.searchPlaceHolder' | translate }}" (input)="searchNews()">
     </header>
     <div class="news-block">
         <a class="news-item" *ngFor="let item of showNews" [routerLink]="[ '/news', item.id ]">
-            <h3 class="title Big">{{item.title}}</h3>
-            <p class="des Regular">{{item.text.substring(0,200)}} <span *ngIf="item.text.length > 200">...</span></p>
+            <h3 class="title Big">{{item.showTitle}}</h3>
+            <p class="des Regular">{{item.showText.substring(0,200)}} <span *ngIf="item.showText.length > 200">...</span></p>
         </a>
     </div>
 </aside>
