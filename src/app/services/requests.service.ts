@@ -7,9 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class RequestsService {
   constructor(private http: HttpClient) { }
-  Get<T>(url: string, reg = false) {
-    return this.http.get<T>(url, {withCredentials: true});
-    
+  Get<T>(url: string, reg = false, responeType: "json" | "text" = "json") {
+    if(reg){
+      return this.http.get<T>(url, {withCredentials: true, params:{reg:reg}});
+    }else{
+      return this.http.get<T>(url, {withCredentials: true, responseType: responeType as "json"});
+    }
   }
   Post<T>(url:string, body:any){
     return this.http.post<T>(url, body, { withCredentials: true });
